@@ -1,5 +1,7 @@
 function whoWon(player1,player2){
 
+  //TODO: What if something OTHER than 'rock', 'paper', or 'scissors' is passed into the whoWon function? Modify the code to deal with the possibility.
+  
    if (player1 === player2){
      return 'TIE!';
    }
@@ -18,3 +20,5 @@ function whoWon(player1,player2){
  
    return 'Player 1 wins!';
  }
+
+module.exports = whoWon;
