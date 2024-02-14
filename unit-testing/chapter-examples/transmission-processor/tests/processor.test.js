@@ -32,4 +32,19 @@ describe("transmission processor", function() {
     expect(result.rawData).toBe(-1);
   });
 
+  test("Return -1 if the id part of the transmission cannot be converted to a number.", function(){
+    let result = processor("trt9701::<48729740349>");
+    expect(result.id).toBe(-1);
+  });
+
+  test("Do not include the < > symbols in the value assigned to rawData", function(){
+    let result = processor("trt9701::<48729740349>");
+    expect(result.rawData).toBe(48729740349);
+  });
+
+  test("Return -1 for the value of rawData if anything besides numbers are present between the < > symbols.", function(){
+    let result = processor("9701::<48729dgf740349>");
+    expect(result.rawData).toBe(-1);
+  });
+
  });
