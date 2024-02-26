@@ -4,12 +4,15 @@ function loaded(){
     const takeoffBtn = document.getElementById("takeoff");
     const flightStatus = document.getElementById("flightStatus");
     const shuttleBackground = document.getElementById("shuttleBackground");
+    const spaceShuttleHeight = document.getElementById('spaceShuttleHeight');
     const landBtn = document.getElementById("landing");
     const abortBtn = document.getElementById("missionAbort");
     const upBtn = document.getElementById("up");
     const downBtn = document.getElementById("down");
     const rightBtn = document.getElementById("right");
     const leftBtn = document.getElementById("left");
+    const rocket = document.getElementById('rocket');
+
     takeoffBtn.addEventListener("click", () => {
         let isReadyToTakeOff = window.confirm("Confirm that the shuttle is ready for takeoff.");
         if(isReadyToTakeOff){
@@ -18,7 +21,8 @@ function loaded(){
             abortBtn.disabled = false;
             flightStatus.textContent = "Shuttle in flight.";
             shuttleBackground.style.backgroundColor = "blue";
-            //TODO: The shuttle height should increase by 10,000 miles..
+            spaceShuttleHeight.innerHTML = parseInt(spaceShuttleHeight.innerHTML) + 10000;
+            rocket.style.bottom = "auto";
         }
     })
 
@@ -29,7 +33,8 @@ function loaded(){
         window.alert("The shuttle is landing. Landing gear engaged.");
         flightStatus.textContent = "The shuttle has landed.";
         shuttleBackground.style.backgroundColor = "green";
-        //TODO: The shuttle height should go down to 0.
+        spaceShuttleHeight.innerHTML = 0;
+        rocket.style.bottom = "0px";
     })
     
     abortBtn.addEventListener("click", () => {
@@ -40,24 +45,27 @@ function loaded(){
             abortBtn.disabled = true;
             flightStatus.textContent = "Mission aborted.";
             shuttleBackground.style.backgroundColor = "green";
-            //TODO: The shuttle height should go down to 0.
+            spaceShuttleHeight.innerHTML = 0;
+            rocket.style.bottom = "0px";
         }
     })
 
     upBtn.addEventListener("click", () => {
-        //TODO: Move the rock image 0px upwards
+        //TODO: Move the rock image 10px upwards
+        spaceShuttleHeight.innerHTML = parseInt(spaceShuttleHeight.innerHTML) + 10000;
     })  
     
     downBtn.addEventListener("click", () => {
-        //TODO: Move the rock image 0px downwards
+        //TODO: Move the rock image 10px downwards
+        spaceShuttleHeight.innerHTML = parseInt(spaceShuttleHeight.innerHTML) - 10000;
     })  
 
     rightBtn.addEventListener("click", () => {
-        //TODO: Move the rock image 0px right
+        //TODO: Move the rock image 10px right
     })  
 
     leftBtn.addEventListener("click", () => {
-        //TODO: Move the rock image 0px left
+        //TODO: Move the rock image 10px left
     })  
 }
 window.addEventListener("load", loaded);
