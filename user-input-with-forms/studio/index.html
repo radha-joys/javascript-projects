@@ -6,6 +6,25 @@
 		// TODO: create a handler
     window.addEventListener("load", function(){
         // TODO: register the handler
+		let form = document.querySelector("form");
+		form.addEventListener("submit", (event) => {
+			let engineInput = document.querySelector("input[name=engine]:checked");
+			let searchInput = document.querySelector("input[name=q]")
+			let actions = {
+				"google": "https://www.google.com/search?q=",
+				"duckDuckGo": "https://duckduckgo.com/?q=",
+				"bing": "https://www.bing.com/search?q=",
+				"ask": "https://www.ask.com/web?q=",
+			};
+			if(engineInput === null || searchInput.value === ""){
+				alert("Entering search text, selecting search engine is mandatory");
+				event.preventDefault();
+			} else{
+				console.log(engineInput)
+				form.setAttribute("action", actions[engineInput.value]);
+			}
+			
+		})
     });
 	</script>
 </head>
@@ -14,6 +33,12 @@
 
 	<form id="searchForm">
     <!-- TODO: add form elements -->
+		<label><input type="text" name="q"/></label>
+		<label><input type="radio" name="engine" value="google"/>Google</label>
+		<label><input type="radio" name="engine" value="duckDuckGo"/>DuckDuckGo</label>
+		<label><input type="radio" name="engine" value="bing"/>Bing</label>
+		<label><input type="radio" name="engine" value="ask"/>Ask</label>
+		<input type="submit" value="Go!"/>
 	</form>
 
 </body>
