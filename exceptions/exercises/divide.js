@@ -9,3 +9,4 @@ function divide(numerator, denominator){
 }
 
 console.log(divide(45, 0));
+
