@@ -1,5 +1,6 @@
 const studio = require('./array-testing');
 
+console.log(studio.checkSeperator());
 console.log(studio.reverseCommas());
 console.log(studio.semiDash());
 console.log(studio.reverseSpaces());
