@@ -2,11 +2,11 @@ const input = require('readline-sync');
 
 // Part A: #1 Populate these arrays
 
-let protein = [];
-let grains = [];
-let veggies = [];
-let beverages = [];
-let desserts = [];
+let protein = ['chicken', 'pork', 'tofu', 'beef', 'fish', 'beans'];
+let grains = ['rice', 'pasta', 'corn', 'potato', 'quinoa', 'crackers'];
+let veggies = ['peas', 'green beans', 'kale', 'edamame', 'broccoli', 'asparagus'];
+let beverages = ['juice', 'milk', 'water', 'soy milk', 'soda', 'tea'];
+let desserts = ['apple', 'banana', 'more kale', 'ice cream', 'chocolate', 'kiwi'];
 
 
 function mealAssembly(protein, grains, veggies, beverages, desserts, numMeals) {
@@ -15,15 +15,19 @@ function mealAssembly(protein, grains, veggies, beverages, desserts, numMeals) {
   
   /// Part A #2: Write a ``for`` loop inside this function
   /// Code your solution for part A #2 below this comment (and above the return statement) ... ///
-
-
+  for(let i = 0; i < numMeals ; i++){
+    let meal = [];
+    pantry.map((item) => meal.push(item[i]));
+    meals.push(meal);
+  }
   return meals;
 }
 
-
 function askForNumber() {
   numMeals = input.question("How many meals would you like to make?");
-  
+  while(numMeals <= 0 || numMeals > 6){
+    numMeals = input.question("How many meals would you like to make? (Note: Enter between 0 to 6:): ");
+  }
   /// CODE YOUR SOLUTION TO PART B here ///
 
   return numMeals;
@@ -45,16 +49,16 @@ function runProgram() {
   /// Change the final input variable (aka numMeals) here to ensure your solution makes the right number of meals ///
   /// We've started with the number 2 for now. Does your solution still work if you change this value? ///
   
-  // let meals = mealAssembly(protein, grains, veggies, beverages, desserts, 2);
-  // console.log(meals)
+  let meals = mealAssembly(protein, grains, veggies, beverages, desserts, 6);
+  console.log(meals)
   
 
   /// TEST PART B HERE ///
   /// UNCOMMENT the next two lines to test your ``askForNumber`` solution ///
   /// Tip - don't test this part until you're happy with your solution to part A #2 ///
   
-  // let mealsForX = mealAssembly(protein, grains, veggies, beverages, desserts, askForNumber());
-  // console.log(mealsForX);
+  let mealsForX = mealAssembly(protein, grains, veggies, beverages, desserts, askForNumber());
+  console.log(mealsForX);
 
     /// TEST PART C HERE ///
   /// UNCOMMENT the remaining commented lines and change the password1 and password2 strings to ensure your code is doing its job ///
